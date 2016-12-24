@@ -2,18 +2,14 @@
 var mute = document.getElementsByClassName('volumeMute')[0];
 mute.click();
 
-// // 時間
-// var time = $('.timeBox')[0];
-// var min = time.innerHTML.split(":")[0];
-// console.log(min);
-
-// var header = document.getElementsByClassName('mdMN15Ul')[0];
-// var clock = document.createElement("div");
-// clock.classList.add('timeBox');
-// header.appendChild(clock);
-
-// s.src = "http://example.jp/big.js"; /* あなたの書いたプログラム */
-//   document.body.appendChild(s);
+// 時間
+var time = document.getElementsByClassName('timeBox')[0];
+time.style.position =  "absolute";
+time.style.zoom = "3";
+time.style.right = "0";
+var chat_bottom = document.getElementsByClassName("MdMN14Info")[0];
+chat_bottom.style.position = "relative";
+chat_bottom.appendChild(time);
 
 // videoが縦なので横にする 
 var video_box = document.getElementsByClassName('videoBox')[0];
