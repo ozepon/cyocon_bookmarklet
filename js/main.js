@@ -18,6 +18,12 @@ mute.click();
 // videoが縦なので横にする 
 var video_box = document.getElementsByClassName('videoBox')[0];
 video_box.style.transform = "rotate(-90deg)";
+video_box.style.position = "absolute";
+video_box.style.left = "-22%";
+
+var video = video_box.children[0];
+video.style.width = "100%";
+video.style.height = "178%";
 
 // 棒読みちゃん
 var tmp_comment = '';
