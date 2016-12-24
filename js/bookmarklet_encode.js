@@ -1,1 +1,1 @@
-javascript:(function()%7Bvar%20s%20=%20document.createElement(%22script%22);s.src%20=%20%22https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/js/main.js%22;s.charset=%22UTF-8%22;document.body.appendChild(s);%7D)();
+javascript:(function()%7Bvar%20time%20=%20new%20Date().getTime();var%20s%20=%20document.createElement(%22script%22);s.src%20=%20%22https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/js/main.js?v=%22%20+%20time;s.charset=%22UTF-8%22;document.body.appendChild(s);%7D)();
