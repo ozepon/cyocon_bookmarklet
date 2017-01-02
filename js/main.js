@@ -23,8 +23,22 @@ video.style.height = "178%";
 
 // 棒読みちゃん
 var tmp_comment = '';
+
+// 置換する文字列
+var replase_map = {'甲虫装機':'インセクター',
+                  '🌻':''};
+                  
 $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
-  var comment = e.target.lastElementChild.innerText; 
+  var comment = e.target.lastElementChild.innerText;
+  // 読み方を変更する
+  for ( var key in replase_map) {
+    console.log('key' + key);
+    var reg = new RegExp(key, 'g');
+    comment = comment.replace(reg,replase_map[key]);
+  }
+
+  console.log(comment);
+
   if(comment !== tmp_comment) {
     var synthes = new SpeechSynthesisUtterance(comment);
     synthes.lang = "ja-JP"
