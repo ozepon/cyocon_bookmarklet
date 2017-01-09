@@ -41,7 +41,10 @@ $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
 
   if(comment !== tmp_comment) {
     var synthes = new SpeechSynthesisUtterance(comment);
-    synthes.lang = "ja-JP"
+    synthes.lang = "ja-JP";
+    synthes.pitch = 1;
+    synthes.rate = 1.2;
+    synthes.volume = 0.5;
     speechSynthesis.speak(synthes);
   }
   tmp_comment = comment;
