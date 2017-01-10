@@ -43,9 +43,10 @@ start_button.style.lineHeight = '2em';
 start_button.style.borderRadius = '5px'
 
   
-if ($('.mdMN14Ttl').children()[0].innerText.match(/けんてぃ/) === null) {
+// varidation
+// if ($('.mdMN14Ttl').children()[0].innerText.match(/けんてぃ/) === null) {
   comment_body.append(start_button);  
-}
+// }
 
 start_button.onclick = function() {
   is_panty = !is_panty;
