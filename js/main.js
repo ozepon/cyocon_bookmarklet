@@ -21,6 +21,26 @@ var video = video_box.children[0];
 video.style.width = "100%";
 video.style.height = "178%";
 
+// startボタン
+var start_button = document.createElement('div');
+start_button.style
+
+$('.MdBtn01Like').click(function() {
+  setTimeout(function(){
+    $('.mdMN15Write').eq(0).click(function() {
+      // $(this).val( message); 
+      $(this).attr('value', message + message); 
+    });
+  }, 0);
+  console.log('foo');
+  var message = 'いい音';
+  $('input.mdMN15Write').val( message); 
+  $('.mdMN15Write').attr('value', message); 
+  $('.mdMN15Write').attr('value', message + message); 
+
+  $('.mdMN15Send').click();
+});
+
 // 棒読みちゃん
 var tmp_comment = '';
 
