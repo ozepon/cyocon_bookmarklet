@@ -45,7 +45,7 @@ start_button.style.borderRadius = '5px'
   
 // varidation
 // if ($('.mdMN14Ttl').children()[0].innerText.match(/けんてぃ/) === null) {
-  comment_body.append(start_button);  
+//   comment_body.append(start_button);  
 // }
 
 start_button.onclick = function() {
@@ -79,13 +79,13 @@ $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
     var reg = new RegExp(key, 'g');
     comment = comment.replace(reg,replase_map[key]);
   }
-  if(is_panty) {
-    var key = 'けんてぃ';
-    var replace = 'ぱんてぃ';
-    console.log('key' + key);
-    var reg = new RegExp(key, 'g');
-    comment = comment.replace(reg,replace);
-  }
+  // if(is_panty) {
+  //   var key = 'けんてぃ';
+  //   var replace = 'ぱんてぃ';
+  //   console.log('key' + key);
+  //   var reg = new RegExp(key, 'g');
+  //   comment = comment.replace(reg,replace);
+  // }
 
   console.log(comment);
 
