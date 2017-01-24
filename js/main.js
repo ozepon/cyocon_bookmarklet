@@ -1,8 +1,8 @@
 // css追加
-var css = document.createEvent('style');
+var css = document.createElement('link');
 css.type = 'text/css';
-css.href = 'https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/css/main.css'
-document.getElementsByTagName('head').item(0).appendchild(css);
+css.href = 'https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/css/main.css';
+document.getElementsByTagName('head').item(0).appendChild(css);
 
 
 // 起動時ミュート
