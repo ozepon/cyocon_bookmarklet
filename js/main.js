@@ -4,7 +4,6 @@ css.type = 'text/css';
 css.href = 'https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/css/main.css';
 document.getElementsByTagName('head').item(0).appendChild(css);
 
-
 // 起動時ミュート
 var mute = document.getElementsByClassName('volumeMute')[0];
 mute.click();
@@ -34,6 +33,23 @@ var is_panty = true;
 
 var comment_body = $('.LyTop')
 comment_body.attr('style', 'position :relative;z-index:1;');
+
+// twitterリンク
+var twitter_link = document.createElement('div');
+var twitter_link__a = document.createElement('a');
+twitter_link__a.href = 'https://twitter.com/ozepon';
+twitter_link__a.text = '棒読みさんのバグ報告はこちらまで';
+twitter_link__a.target = '_blank';
+twitter_link__a.style.color = '#b1b4b1';
+twitter_link.appendChild(twitter_link__a);
+twitter_link.style.position = 'absolute';
+twitter_link.style.right = '4%';
+twitter_link.style.borderRadius = '5em'
+twitter_link.style.padding = '0.5em';
+twitter_link.style.background = 'white';
+comment_body.append(twitter_link);
+
+
 
 // startボタン
 var start_button = document.createElement('div');
