@@ -1,10 +1,10 @@
 /* chatをline風に*/
 .MdMN15Comment .mdMN15Scroll {
-  background: #7484ad;
+  background: #6fa1c7;
   padding-left: 6px;
 }
 .MdMN17Chat .mdMN17Inner2 {
-  background: #a1ea4b;
+  background: #00c402;
 }
 .MdMN17Chat .mdMN17Ttl,
 .MdMN17Chat .mdMN17Desc{
@@ -22,7 +22,7 @@
 }
 .MdMN15Comment .mdMN15Send {
   color: #ffffff;
-  background: rgb(13, 169, 239);
+  background: #5685e4;
 }
 .MdMN15Comment .mdMN15Hd a {
   /*color: white;*/
