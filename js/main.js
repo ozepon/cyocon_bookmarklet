@@ -1,3 +1,10 @@
+// css追加
+var css = document.createEvent('style');
+css.type = 'text/css';
+css.href = 'https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/css/main.css'
+document.getElementsByTagName('head').item(0).appendchild(css);
+
+
 // 起動時ミュート
 var mute = document.getElementsByClassName('volumeMute')[0];
 mute.click();
