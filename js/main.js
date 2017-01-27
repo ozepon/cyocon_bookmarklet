@@ -1,9 +1,9 @@
-// css追加
-// var css = document.createElement('link');
-// css.type = 'text/css';
-// css.href = 'https://cdn.rawgit.com/ozepon/cyocon_bookmarklet/master/css/main.css';
-// document.getElementsByTagName('head').item(0).appendChild(css);
 (function() {
+  // 棒読み機能が動くか判定
+  if(!window.SpeechSynthesisUtterance){
+    alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
+  }
+  
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
   mute.click();
@@ -27,7 +27,6 @@
   video.style.width = "100%";
   video.style.height = "178%";
 
-
   // Panty Mode
   // var is_panty = true;  
 
@@ -49,8 +48,6 @@
   twitter_link.style.background = 'white';
   comment_body.append(twitter_link);
 
-
-
   // startボタン
   // var start_button = document.createElement('div');
   // start_button.innerText = 'Panty Mode';
@@ -65,7 +62,6 @@
   // start_button.style.lineHeight = '2em';
   // start_button.style.borderRadius = '5px'
 
-    
   // varidation
   // if ($('.mdMN14Ttl').children()[0].innerText.match(/けんてぃ/) === null) {
   //   comment_body.append(start_button);  
@@ -88,8 +84,45 @@
   //   speechSynthesis.speak(synthes);  
   // };
 
+  // ターゲットになったらはんなりする
+  var comment_count = 0;
+  var target_count = Math.floor(Math.random(1)*40);
+  var target_name = 'おかまちゃん'; //一時的な名前
+  
   // 棒読みちゃん
   var tmp_comment = '';
+
+  // target判定
+  function set_target() {
+    console.info('target_count' + target_count);
+    console.info('comment_count' + comment_count);
+    console.info('判定' + (target_count === comment_count));
+    if (target_count === comment_count) {
+      target_info = tmp_comment.split(' '); 
+      console.info(target_info);
+      // ハートやフォローの場合の対応は対象外にしてtarget_countをインクリメントする
+      // 判定方法はtarget_infoのlenghtがひとつの場合、コメント以外とみなす
+      console.info(target_info.length);
+      console.info(2 <= target_info.length);
+      if(2 <= target_info.length) {
+        console.info('set_target yes');
+        var reg = new RegExp(/[\(||\{||\}||\.||\\]/, 'g');
+        target_name = target_info[0].replace(reg,'');
+        
+        console.info('この人がはんなりターゲットになりました　＝＞' + target_name);
+      } else {
+        console.info('set_target no');
+        target_count++;
+      }
+    }
+  }
+
+  // target_nameの人のコメントか判定する
+  // parmas comment[String]
+  function is_hanari(comment) {
+    var reg = new RegExp(target_name);
+    return !!comment.match(reg);
+  }
 
   // 置換する文字列
   var replase_map = {'甲虫装機':'インセクター',
@@ -102,6 +135,7 @@
       var reg = new RegExp(key, 'g');
       comment = comment.replace(reg,replase_map[key]);
     }
+
     // if(is_panty) {
     //   var key = 'けんてぃ';
     //   var replace = 'ぱんてぃ';
@@ -114,10 +148,21 @@
       console.info("読み上げる言葉" + comment);
       var synthes = new SpeechSynthesisUtterance(comment);
       synthes.lang = "ja-JP";
-      synthes.pitch = 1;
-      synthes.rate = 1.2;
-      synthes.volume = 0.5;
+
+      if (is_hanari(comment)) {
+        synthes.pitch = 1.5;
+        synthes.rate = 0.6;
+        synthes.volume = 0.5;
+      } else {
+        synthes.pitch = 1;
+        synthes.rate = 1.2;
+        synthes.volume = 0.5;
+      }
       speechSynthesis.speak(synthes);
+      
+      // taregetをセット
+      set_target();
+      comment_count++;
     }
     tmp_comment = comment;
   });
