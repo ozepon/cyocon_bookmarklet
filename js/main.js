@@ -59,7 +59,7 @@
   // start_button.style.lineHeight = '2em';
   // start_button.style.borderRadius = '5px'
 
-  //   comment_body.append(start_button);  
+  //  comment_body.append(start_button);  
 
   // ターゲットになったらはんなりする
   var comment_count = 0;
@@ -96,37 +96,39 @@
 
   // target_nameの人のコメントか判定する
   // parmas comment[String]
-  function is_hanari(comment) {
+  function is_dandy(comment) {
     var reg = new RegExp(target_name);
     return !!comment.match(reg);
   }
 
   // 置換する文字列
   var replase_map = {'甲虫装機':'インセクター',
-                    '🌻':''};
+                    '🌻':'',
+                    'www':'ワラワラワラ',
+                    'JK':'女子校生'};
+
   $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
     var comment = e.target.lastElementChild.innerText;
     // 読み方を変更する
     for ( var key in replase_map) {
-      // console.log('key' + key);
-      var reg = new RegExp(key, 'g');
+      var reg = new RegExp(key, 'gi');
       comment = comment.replace(reg,replase_map[key]);
     }
 
     console.info("validation前" + comment);
     if(comment !== tmp_comment) {
-        console.info("読み上げる言葉" + comment);
-        var synthes = new SpeechSynthesisUtterance(comment);
-        synthes.lang = "ja-JP"
-        synthes.pitch = 1.5;
-        synthes.rate = 0.6;
-        synthes.volume = 0.5;
+      console.info("読み上げる言葉" + comment);
+      var synthes = new SpeechSynthesisUtterance(comment);
+      synthes.lang = "ja-JP"
+      synthes.pitch = 1000;
+      synthes.rate = 1.3;
+      synthes.volume = 2;
       
-        speechSynthesis.speak(synthes);
-        
-        // taregetをセット
-        set_target();
-        comment_count++;
+      speechSynthesis.speak(synthes);
+      
+      // taregetをセット
+      set_target();
+      comment_count++;
     }
     tmp_comment = comment;
   });
