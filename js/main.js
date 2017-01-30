@@ -64,16 +64,14 @@
   // ターゲットになったらはんなりする
   var comment_count = 0;
   var target_count = Math.floor(Math.random(1)*40);
-  var target_name = 'おかまちゃん'; //一時的な名前
+  var dandy_names = [];
+  var cyocon_names = ['さおりん'];
   
   // 棒読みちゃん
   var tmp_comment = '';
 
   // target判定
   function set_target() {
-    console.info('target_count' + target_count);
-    console.info('comment_count' + comment_count);
-    console.info('判定' + (target_count === comment_count));
     if (target_count === comment_count) {
       target_info = tmp_comment.split(' '); 
       console.info(target_info);
@@ -105,7 +103,15 @@
   var replase_map = {'甲虫装機':'インセクター',
                     '🌻':'',
                     'www':'ワラワラワラ',
-                    'JK':'女子校生'};
+                    'JK':'女子校生',
+                    '初見':'しょけん',
+                    'hshs':'はすはす',
+                    'prpr':'ぺろぺろ',
+                    'デブ':'',
+                    'でぶ':'',
+                    'ブス':'',
+                    'ぶす':'',
+                  };
 
   $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
     var comment = e.target.lastElementChild.innerText;
