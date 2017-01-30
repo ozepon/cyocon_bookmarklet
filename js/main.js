@@ -107,10 +107,11 @@
                     '初見':'しょけん',
                     'hshs':'はすはす',
                     'prpr':'ぺろぺろ',
+                    'wktk':'わくてか',
                     'デブ':'',
                     'でぶ':'',
                     'ブス':'',
-                    'ぶす':'',
+                    'ぶす':''
                   };
 
   $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
@@ -126,8 +127,8 @@
       console.info("読み上げる言葉" + comment);
       var synthes = new SpeechSynthesisUtterance(comment);
       synthes.lang = "ja-JP"
-      synthes.pitch = 1000;
-      synthes.rate = 1.3;
+      synthes.pitch = 100;
+      synthes.rate = 1.1;
       synthes.volume = 2;
       
       speechSynthesis.speak(synthes);
