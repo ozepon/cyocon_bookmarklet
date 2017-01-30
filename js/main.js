@@ -27,9 +27,6 @@
   video.style.width = "100%";
   video.style.height = "178%";
 
-  // Panty Mode
-  // var is_panty = true;  
-
   var comment_body = $('.LyTop')
   comment_body.attr('style', 'position :relative;z-index:1;');
 
@@ -62,27 +59,7 @@
   // start_button.style.lineHeight = '2em';
   // start_button.style.borderRadius = '5px'
 
-  // varidation
-  // if ($('.mdMN14Ttl').children()[0].innerText.match(/けんてぃ/) === null) {
   //   comment_body.append(start_button);  
-  // }
-
-  // start_button.onclick = function() {
-  //   is_panty = !is_panty;
-  //   if (is_panty) {
-  //     start_button.innerText = 'Yes Panty!'; 
-  //     start_button.style.background = 'rgb(255, 185, 185)';    
-  //   }else {
-  //     start_button.innerText = 'No Panty...'; 
-  //     start_button.style.background = 'rgb(40, 40, 160)';
-  //   }
-  //   var synthes = new SpeechSynthesisUtterance(start_button.innerText);
-  //   synthes.lang = "ja-JP";
-  //   synthes.pitch = 1.5;
-  //   synthes.rate = 0.6;
-  //   synthes.volume = 0.5;
-  //   speechSynthesis.speak(synthes);  
-  // };
 
   // ターゲットになったらはんなりする
   var comment_count = 0;
@@ -108,7 +85,7 @@
         console.info('set_target yes');
         var reg = new RegExp(/[\(||\{||\}||\.||\\]/, 'g');
         target_name = target_info[0].replace(reg,'');
-        
+
         console.info('この人がはんなりターゲットになりました　＝＞' + target_name);
       } else {
         console.info('set_target no');
@@ -136,33 +113,20 @@
       comment = comment.replace(reg,replase_map[key]);
     }
 
-    // if(is_panty) {
-    //   var key = 'けんてぃ';
-    //   var replace = 'ぱんてぃ';
-    //   console.log('key' + key);
-    //   var reg = new RegExp(key, 'g');
-    //   comment = comment.replace(reg,replace);
-    // } 
     console.info("validation前" + comment);
     if(comment !== tmp_comment) {
-      console.info("読み上げる言葉" + comment);
-      var synthes = new SpeechSynthesisUtterance(comment);
-      synthes.lang = "ja-JP";
-
-      if (is_hanari(comment)) {
+        console.info("読み上げる言葉" + comment);
+        var synthes = new SpeechSynthesisUtterance(comment);
+        synthes.lang = "ja-JP"
         synthes.pitch = 1.5;
         synthes.rate = 0.6;
         synthes.volume = 0.5;
-      } else {
-        synthes.pitch = 1;
-        synthes.rate = 1.2;
-        synthes.volume = 0.5;
-      }
-      speechSynthesis.speak(synthes);
       
-      // taregetをセット
-      set_target();
-      comment_count++;
+        speechSynthesis.speak(synthes);
+        
+        // taregetをセット
+        set_target();
+        comment_count++;
     }
     tmp_comment = comment;
   });
