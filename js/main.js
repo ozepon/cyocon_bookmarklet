@@ -64,39 +64,95 @@
   // ターゲットになったらはんなりする
   var comment_count = 0;
   var target_count = Math.floor(Math.random(1)*40);
+
+  // target_names
   var dandy_names = [];
-  var cyocon_names = ['さおりん'];
+  var geek_names = ['ISISかなめ'];
+  var okinawa_names = ['さおりん'];
   
   // 棒読みちゃん
   var tmp_comment = '';
 
-  // target判定
-  function set_target() {
-    if (target_count === comment_count) {
-      target_info = tmp_comment.split(' '); 
-      console.info(target_info);
-      // ハートやフォローの場合の対応は対象外にしてtarget_countをインクリメントする
-      // 判定方法はtarget_infoのlenghtがひとつの場合、コメント以外とみなす
-      console.info(target_info.length);
-      console.info(2 <= target_info.length);
-      if(2 <= target_info.length) {
-        console.info('set_target yes');
-        var reg = new RegExp(/[\(||\{||\}||\.||\\]/, 'g');
-        target_name = target_info[0].replace(reg,'');
+  // namesにcommentから取得した名前を返却する
+  function get_name_to_comment(comment) {
+    var target_name = null;
+    var target_info = comment.split(' '); 
+    console.info(target_info);
+    // ハートやフォローの場合の対応は対象外にしてtarget_countをインクリメントする
+    // 判定方法はtarget_infoのlenghtがひとつの場合、コメント以外とみなす
+    console.info(target_info.length);
+    console.info(2 <= target_info.length);
+    if(2 <= target_info.length) {
+      console.info('set_target yes');
+      var reg = new RegExp(/[\(||\{||\}||\.||\\]/, 'g');
+      target_name = target_info[0].replace(reg,'');
+    }
+    return target_name;
+  }
 
-        console.info('この人がはんなりターゲットになりました　＝＞' + target_name);
-      } else {
-        console.info('set_target no');
-        target_count++;
-      }
+  // target判定
+  function set_target(comment) {
+    var name = get_name_to_comment(comment);
+    if (name === null) { return false;}
+
+    if (/dandy/.test(comment)) {
+      console.info('dandyに追加されました　＝＞' + name);
+      dandy_names.push(name);
+
+      //要素を削除する
+      okinawa_names.some(function(v, i){
+          if (v==name) okinawa_names.splice(i,1);    
+      });
+      geek_names.some(function(v, i){
+        if (v==name) geek_names.splice(i,1);    
+      });
+
+
+    } else if (/okinawa/.test(comment)) {
+      console.info('okinawaに追加されました　＝＞' + name);
+      okinawa_names.push(name);
+      dandy_names.some(function(v, i){
+          if (v==name) dandy_names.splice(i,1);    
+      });
+      geek_names.some(function(v, i){
+        if (v==name) geek_names.splice(i,1);    
+      });
+    } else if (/geek/.test(comment)) {
+      console.info('geekに追加されました　＝＞' + name);
+      geek_names.push(name);
+      okinawa_names.some(function(v, i){
+          if (v==name) okinawa_names.splice(i,1);    
+      });
+      dandy_names.some(function(v, i){
+          if (v==name) dandy_names.splice(i,1);    
+      });
+    } else if (/しょけん/.test(comment)) {
+      // all　削除
+      okinawa_names.some(function(v, i){
+          if (v==name) okinawa_names.splice(i,1);    
+      });
+      dandy_names.some(function(v, i){
+          if (v==name) dandy_names.splice(i,1);    
+      });
+      geek_names.some(function(v, i){
+        if (v==name) geek_names.splice(i,1);    
+      });
+
     }
   }
 
-  // target_nameの人のコメントか判定する
-  // parmas comment[String]
-  function is_dandy(comment) {
-    var reg = new RegExp(target_name);
-    return !!comment.match(reg);
+  // 配列に渡された名前リストにコメントが前方一致するか判定
+  // params names [Array<String>] 名前の配列
+  // params comment [String]
+  function is_names(names, comment) {
+    var flg = false;
+    names.forEach(function(val, index, arr){
+      var reg = new RegExp('^' + val);
+      if (reg.test(comment)) {
+        flg = true; 
+      }
+    })
+    return flg;
   }
 
   // 置換する文字列
@@ -130,11 +186,25 @@
       synthes.pitch = 100;
       synthes.rate = 1.1;
       synthes.volume = 2;
-      
+
+      // 音声変更
+      if (is_names(okinawa_names, comment)) {
+        synthes.pitch = 2;
+        synthes.rate = 0.5;
+        synthes.volume = 0.5;
+      } else if (is_names(geek_names, comment)) {
+        synthes.pitch = -0.2;
+        synthes.rate = 0.65;
+        synthes.volume = 2.5;
+      } else if (is_names(dandy_names, comment)) {
+        synthes.pitch = -0.5;
+        synthes.rate = 1.2;
+        synthes.volume = 2.5;
+      }
       speechSynthesis.speak(synthes);
       
       // taregetをセット
-      set_target();
+      set_target(comment);
       comment_count++;
     }
     tmp_comment = comment;

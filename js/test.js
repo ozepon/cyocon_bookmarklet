@@ -1,12 +1,12 @@
-comment = "運営の都合により削除されました"
+comment = "おはようございます"
 
 var synthes = new SpeechSynthesisUtterance(comment);
 synthes.lang = "ja-JP"
 
 // 一般
-synthes.pitch = 1000;
-synthes.rate = 1.3;
-synthes.volume = 2;      
+// synthes.pitch = 100;
+// synthes.rate = 1.3;
+// synthes.volume = 2;      
 
 // さおりん
 // synthes.pitch = 2;
