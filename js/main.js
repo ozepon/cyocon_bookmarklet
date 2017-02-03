@@ -84,7 +84,7 @@
     console.info(2 <= target_info.length);
     if(2 <= target_info.length) {
       console.info('set_target yes');
-      var reg = new RegExp(/[\(||\{||\}||\.||\\]/, 'g');
+      var reg = new RegExp(/[\(||\)||\{||\}||\.||\\]/, 'g');
       target_name = target_info[0].replace(reg,'');
     }
     return target_name;
