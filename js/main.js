@@ -3,7 +3,9 @@
   if(!window.SpeechSynthesisUtterance){
     alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
   }
-  
+  // 更新日をversionとする
+  var update_date = '20170212';
+
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
   mute.click();
@@ -51,6 +53,15 @@
       comment_body.append(hotaru_wrap);
     }
   }
+
+  // versionを表示
+  var version = document.createElement('div');
+  version.innerText = 'update: ' + update_date;
+  version.style.position = 'absolute';
+  version.style.right = '4%';
+  version.style.top =  '96%';
+  version.style.padding = '0.5em';
+  comment_body.append(version);
 
   // twitterリンク
   var twitter_link = document.createElement('div');
