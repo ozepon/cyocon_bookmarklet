@@ -30,6 +30,30 @@
   var comment_body = $('.LyTop')
   comment_body.attr('style', 'position :relative;z-index:1;');
 
+  // 蛍の光
+  var youtube_id = 'brUWAlQsWMg';
+  var hotaru_youtube = null;
+
+  // 終了5分前になったら蛍の光を流す 
+  function check_live_close() {
+    console.info('check_close');
+    console.info(parseInt(time.innerHTML));
+    if(55 <= parseInt(time.innerHTML) && hotaru_youtube === null) {
+      console.info('check_close true');
+      var hotaru_wrap = $('<div></div>');
+      hotaru_wrap.css('position','absolute');
+      hotaru_wrap.css('right','9%');
+      hotaru_wrap.css('top','66%');
+      hotaru_wrap.css('width','350px');
+
+      var ele_str = '<iframe width="100%" src=https://www.youtube.com/embed/' + youtube_id + '?loop=1&autoplay=1 frameborder="0" allowfullscreen></iframe>';
+      hotaru_youtube = $(ele_str);
+      hotaru_wrap.append(hotaru_youtube);
+
+      comment_body.append(hotaru_wrap);
+    }
+  }
+
   // twitterリンク
   var twitter_link = document.createElement('div');
   var twitter_link__a = document.createElement('a');
@@ -45,6 +69,7 @@
   twitter_link.style.background = 'white';
   comment_body.append(twitter_link);
 
+  
   // startボタン
   // var start_button = document.createElement('div');
   // start_button.innerText = 'Panty Mode';
@@ -141,6 +166,8 @@
     }
   }
 
+  
+
   // 配列に渡された名前リストにコメントが前方一致するか判定
   // params names [Array<String>] 名前の配列
   // params comment [String]
@@ -208,5 +235,6 @@
       comment_count++;
     }
     tmp_comment = comment;
+    check_live_close();
   });
 })();
