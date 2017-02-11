@@ -36,10 +36,8 @@
 
   // 終了5分前になったら蛍の光を流す 
   function check_live_close() {
-    console.info('check_close');
-    console.info(parseInt(time.innerHTML));
     if(55 <= parseInt(time.innerHTML) && hotaru_youtube === null) {
-      console.info('check_close true');
+      time.style.color = 'orange'
       var hotaru_wrap = $('<div></div>');
       hotaru_wrap.css('position','absolute');
       hotaru_wrap.css('right','9%');
