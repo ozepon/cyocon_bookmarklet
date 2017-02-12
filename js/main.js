@@ -4,7 +4,7 @@
     alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
   }
   // 更新日をversionとする
-  var update_date = '20170212';
+  var update_date = '20170213';
 
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
@@ -33,19 +33,37 @@
   comment_body.attr('style', 'position :relative;z-index:1;');
 
   // 蛍の光
-  var youtube_id = 'brUWAlQsWMg';
+  var youtube_ids = ['brUWAlQsWMg'
+  , 'K6O1i5v54Ic'
+  , 'je83qpCmZB4'
+  , 'hwZNL7QVJjE'
+  , 'PmH2V3mrchE'
+  , 'mHsmyYPqa1M'
+  , 'ZW7Oi8qq-D8'
+  , 'GJFyr8napb8'
+  , 'yxYRJEeN6Gg'
+  , 'r3aUdBtaBp4'
+  , 'cpIa89_rZoA'
+  , 'hw7oAFoddiE'
+  , '-EKxzId_Sj4'
+  , '-OTryGzS-G8'
+  , 'zKR96t8j_Hs'
+  , 'lnFRqJTKv8M'
+  , '1Dp-ubqlGS0'
+  ];
   var hotaru_youtube = null;
 
   // 終了5分前になったら蛍の光を流す 
   function check_live_close() {
-    if(55 <= parseInt(time.innerHTML) && hotaru_youtube === null) {
+    var close_time = 55;
+    if(close_time <= parseInt(time.innerHTML) && hotaru_youtube === null) {
       time.style.color = 'orange'
       var hotaru_wrap = $('<div></div>');
       hotaru_wrap.css('position','absolute');
       hotaru_wrap.css('right','9%');
       hotaru_wrap.css('top','66%');
       hotaru_wrap.css('width','350px');
-
+      var youtube_id = youtube_ids[Math.floor(Math.random() * youtube_ids.length)];
       var ele_str = '<iframe width="100%" src=https://www.youtube.com/embed/' + youtube_id + '?loop=1&autoplay=1 frameborder="0" allowfullscreen></iframe>';
       hotaru_youtube = $(ele_str);
       hotaru_wrap.append(hotaru_youtube);
