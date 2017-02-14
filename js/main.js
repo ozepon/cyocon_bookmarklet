@@ -50,6 +50,7 @@
   , 'zKR96t8j_Hs'
   , 'lnFRqJTKv8M'
   , '1Dp-ubqlGS0'
+  , 'Bhg7FcMjDsM'
   ];
   var hotaru_youtube = null;
 
