@@ -4,7 +4,7 @@
     alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
   }
   // 更新日をversionとする
-  var update_date = '20170213';
+  var update_date = '20170220';
 
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
