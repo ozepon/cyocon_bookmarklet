@@ -1,8 +1,11 @@
-comment = "おはようございます"
+// var comment = 'おはようございます';
+var comment = 'Hello world';
 
 var synthes = new SpeechSynthesisUtterance(comment);
-synthes.lang = "ja-JP"
-
+var voices = window.speechSynthesis.getVoices();
+// synthes.lang = "ja-JP"
+synthes.lang = "en-US";
+synthes.voice = voices[11];
 // 一般
 // synthes.pitch = 100;
 // synthes.rate = 1.3;
@@ -19,9 +22,3 @@ synthes.lang = "ja-JP"
 // synthes.volume = 2.5;
 
 speechSynthesis.speak(synthes);
-
-// =======================================================
-// comment = "JKとjk" 
-// key = 'JK';
-// var reg = new RegExp(key, 'gi');
-// comment = comment.replace(reg,"女子");
