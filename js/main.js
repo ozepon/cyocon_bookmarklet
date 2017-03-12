@@ -4,7 +4,7 @@
     alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
   }
   // 更新日をversionとする
-  var update_date = '20170221: english mode追加';
+  var update_date = '20170309: エンディングソング変更';
 
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
@@ -32,25 +32,17 @@
   var comment_body = $('.LyTop')
   comment_body.attr('style', 'position :relative;z-index:1;');
 
-  // 蛍の光
-  var youtube_ids = ['brUWAlQsWMg'
-  , 'K6O1i5v54Ic'
-  , 'je83qpCmZB4'
-  , 'hwZNL7QVJjE'
-  , 'PmH2V3mrchE'
-  , 'mHsmyYPqa1M'
-  , 'ZW7Oi8qq-D8'
-  , 'GJFyr8napb8'
-  , 'yxYRJEeN6Gg'
-  , 'r3aUdBtaBp4'
-  , 'cpIa89_rZoA'
-  , 'hw7oAFoddiE'
-  , '-EKxzId_Sj4'
-  , '-OTryGzS-G8'
-  , 'zKR96t8j_Hs'
-  , 'lnFRqJTKv8M'
-  , '1Dp-ubqlGS0'
-  , 'Bhg7FcMjDsM'
+  // エンディングソング
+  var youtube_ids = [
+    'brUWAlQsWMg' // ホタルの光
+  , 'LL9kcGra9Rs' // また逢う日まで
+  , 'rU5yhk5_BMU' // できっこないをやらなくちゃ
+  , 'wEoyzisgokw' //　歩いて帰ろう
+  , '6lKTQbrM9RI' // 今夜はブギー・バック (音ちっさ！)
+  , 'tSJ2t2QHcxo' // raindow MONGOL800
+  , 'esSMW7kTkk0' // 夢叶う
+  , 'Dw2Qfwk3z9c' // カントリーロード
+  , 'YJSbFjqS8Ek' // colory starry ななひら
   ];
   var hotaru_youtube = null;
 
