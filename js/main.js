@@ -4,7 +4,7 @@
     alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
   }
   // 更新日をversionとする
-  var update_date = '20170309: エンディングソング変更';
+  var update_date = '20170419: エンディングソング変更&桃白白対応＆youtubeの画面レイアウト修正';
 
   // 起動時ミュート
   var mute = document.getElementsByClassName('volumeMute')[0];
@@ -35,14 +35,22 @@
   // エンディングソング
   var youtube_ids = [
     'brUWAlQsWMg' // ホタルの光
-  , 'LL9kcGra9Rs' // また逢う日まで
-  , 'rU5yhk5_BMU' // できっこないをやらなくちゃ
-  , 'wEoyzisgokw' //　歩いて帰ろう
-  , '6lKTQbrM9RI' // 今夜はブギー・バック (音ちっさ！)
-  , 'tSJ2t2QHcxo' // raindow MONGOL800
-  , 'esSMW7kTkk0' // 夢叶う
-  , 'Dw2Qfwk3z9c' // カントリーロード
-  , 'YJSbFjqS8Ek' // colory starry ななひら
+  // , 'LL9kcGra9Rs' // また逢う日まで
+  // , 'rU5yhk5_BMU' // できっこないをやらなくちゃ
+  // , 'wEoyzisgokw' //　歩いて帰ろう
+  // , '6lKTQbrM9RI' // 今夜はブギー・バック (音ちっさ！)
+  // , 'tSJ2t2QHcxo' // raindow MONGOL800
+  // , 'esSMW7kTkk0' // 夢叶う
+  // , 'Dw2Qfwk3z9c' // カントリーロード
+  // , 'YJSbFjqS8Ek' // colory starry ななひら
+
+  , '0hgL0TvbNqE' // にんげんっていいな、気付かないうちに・・・
+  , 'ApbW2XKwhPU' // 東京は夜の七時 -リオは朝の七時-
+  , '7CBaJFcqnPc' // PooRush - Junk (Official Music Video)
+  , 'DzIOuiVQUvQ' // ひるね姫 主題歌 デイ･ドリーム･ビリーバー 高畑充希
+  , 'etU18FB5Qew' // チームしゃちほこ - START / Team Syachihoko
+  , 'Nc_VuqmTgso' // 沖縄人トリセツ / 西野カナ（オトコ版）映画『ヒロイン失格』主題歌
+  , 'J5oytYDMWHA' // ヤバイTシャツ屋さん - 「あつまれ！パーティーピーポー」Music Video［メジャー版］
   ];
   var hotaru_youtube = null;
 
@@ -53,8 +61,8 @@
       time.style.color = 'orange'
       var hotaru_wrap = $('<div></div>');
       hotaru_wrap.css('position','absolute');
-      hotaru_wrap.css('right','9%');
-      hotaru_wrap.css('top','66%');
+      hotaru_wrap.css('right','8%');
+      hotaru_wrap.css('top','70%');
       hotaru_wrap.css('width','350px');
       var youtube_id = youtube_ids[Math.floor(Math.random() * youtube_ids.length)];
       var ele_str = '<iframe width="100%" src=https://www.youtube.com/embed/' + youtube_id + '?loop=1&autoplay=1 frameborder="0" allowfullscreen></iframe>';
@@ -208,8 +216,6 @@
     }
   }
 
-  
-
   // 配列に渡された名前リストにコメントが前方一致するか判定
   // params names [Array<String>] 名前の配列
   // params comment [String]
@@ -236,7 +242,8 @@
                     'デブ':'',
                     'でぶ':'',
                     'ブス':'',
-                    'ぶす':''
+                    'ぶす':'',
+                    '桃白白': 'タオパイパイ'
                   };
 
   $($('.mdMN15Scroll')[0]).bind('DOMSubtreeModified', function(e) {
@@ -268,7 +275,6 @@
       synthes.rate = 1.1;
       synthes.volume = 2;
       
-
       // 音声変更
       if (is_names(okinawa_names, comment)) {
         synthes.pitch = 2;
