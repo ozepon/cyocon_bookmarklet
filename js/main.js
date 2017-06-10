@@ -4,7 +4,7 @@
       alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
     }
     // 更新日をversionとする
-    var update_date = '20170502: 画面向き切替ボタン追加';
+    var update_date = '20170610: エンディングソング総入れ替え（全30曲）';
 
     // 起動時ミュート
     var mute = document.getElementsByClassName('volumeMute')[0];
@@ -60,13 +60,44 @@
     // , 'Dw2Qfwk3z9c' // カントリーロード
     // , 'YJSbFjqS8Ek' // colory starry ななひら
 
-    , '0hgL0TvbNqE' // にんげんっていいな、気付かないうちに・・・
-    , 'ApbW2XKwhPU' // 東京は夜の七時 -リオは朝の七時-
-    , '7CBaJFcqnPc' // PooRush - Junk (Official Music Video)
-    , 'DzIOuiVQUvQ' // ひるね姫 主題歌 デイ･ドリーム･ビリーバー 高畑充希
-    , 'etU18FB5Qew' // チームしゃちほこ - START / Team Syachihoko
-    , 'Nc_VuqmTgso' // 沖縄人トリセツ / 西野カナ（オトコ版）映画『ヒロイン失格』主題歌
-    , 'J5oytYDMWHA' // ヤバイTシャツ屋さん - 「あつまれ！パーティーピーポー」Music Video［メジャー版］
+    // , '0hgL0TvbNqE' // にんげんっていいな、気付かないうちに・・・
+    // , 'ApbW2XKwhPU' // 東京は夜の七時 -リオは朝の七時-
+    // , '7CBaJFcqnPc' // PooRush - Junk (Official Music Video)
+    // , 'DzIOuiVQUvQ' // ひるね姫 主題歌 デイ･ドリーム･ビリーバー 高畑充希
+    // , 'etU18FB5Qew' // チームしゃちほこ - START / Team Syachihoko
+    // , 'Nc_VuqmTgso' // 沖縄人トリセツ / 西野カナ（オトコ版）映画『ヒロイン失格』主題歌
+    // , 'J5oytYDMWHA' // ヤバイTシャツ屋さん - 「あつまれ！パーティーピーポー」Music Video［メジャー版］
+
+    , '3cdvKw5dctA' // #吉木悠佳「Daybreak」
+    , 'yR0KgP7OrSw' // My Hair is Bad – 告白　(Official Music Video)
+    , 'VZLEOcYpCng' // sumika / 春風【Music Video 】
+    , 'jYoaGPEhaC0' // sumika / リグレット【Music Video】
+    , 'jliijW1RhM8' // ウソツキ - 一生分のラブレター（MV）
+    , 'ZpvYkTJZogw' // ウソツキ - 新木場発、銀河鉄道（MV）
+    , 'cAm_hgAfduA' // 04 Limited Sazabys「fiction」(Official Music Video)
+    , 'e3857A5uuCA' // コレサワ「あたしを彼女にしたいなら」【Music Video】
+    , '8xc20yXXRCI' // おいしくるメロンパン「シュガーサーフ」
+    , 'ds1fmhHXd0E' // バンドじゃないもん！／しゅっとこどっこい[MUSIC VIDEO]
+    , '_RRbVhobb9o' // BiSH / オーケストラ[OFFICIAL VIDEO]
+    , 'YPK23Sa9q5Y' // 【MV】まねきケチャ『きみわずらい』
+    , 'c3_1Vpi7RN0' // Party Rockets GT 8thシングル「START!!」MV #パティロケ
+    , '3zwWQ3xAiQg' // 熱苦しくてうっとおしい!? ベイビーレイズJAPAN「夜明けBrand New Days」【LIVE映像】
+    , 'OIS0UkIxcPM' // たこやきレインボー / RAINBOW～私は私やねんから～
+    , 'pOYXQBy5Pqw' // 私立恵比寿中学 『感情電車』Music Video
+    , '7LBUEYGfisQ' // METAFIVE - Don’t Move -Studio Live Version-
+    , '6LnDwc6BW28' // PARADISE【MV】RADIO FISH/Full ver.
+    , 'auofz0gr7C8' // WANIMA-1106 (OFFICIAL VIDEO)
+    , 'Pi42wUO4tVg' // Party Rockets GT 7thシングル「真夏のマジ☆ロケット」MV #パティロケ
+    , 'RXKsBPv9BMk' // おいしくるメロンパン「色水」
+    , '0M3HoC2uGhM' // My Hair is Bad - 真赤 (Official Music Video)
+    , 'dZRo0-cwob4' // Hump Back - 月まで (Official Music Video)
+    , 'NQJtWuLhtlA' // グッドモーニングアメリカ「空ばかり見ていた」PV
+    , 'X6JU6SkBOAU' // 平井 大 / Story of Our Life (Music video)
+    , 'tkfmSK2Xk0Q' // みそっかす　「アメリカと中国と静岡」PV
+    , 'Sl7B_7h2-OM' // 【Silent Siren】「チェリボム」MUSIC VIDEO full ver.【サイレントサイレン】
+    , 'NS-xd7f-W34' // わーすた / うるとらみらくるくるふぁいなるアルティメットチョコびーむ MUSIC VIDEO Short Ver.
+    , 'Qs9C5sVJuVs' // 岡崎体育 『Natural Lips』Music Video
+    , 'mzVzrnXxaeg' // 東京カランコロン / 16のbeat【MUSIC VIDEO&特典DVD映像】
     ];
     var hotaru_youtube = null;
 
