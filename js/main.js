@@ -4,7 +4,7 @@
       alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
     }
     // 更新日をversionとする
-    var update_date = '20170921: bgmをアイドルネッサンス特集に変更';
+    var update_date = '20171212: 蛍の光モードを削除';
 
     // 起動時ミュート
     var mute = document.getElementsByClassName('volumeMute')[0];
@@ -98,18 +98,18 @@
     // , 'NS-xd7f-W34' // わーすた / うるとらみらくるくるふぁいなるアルティメットチョコびーむ MUSIC VIDEO Short Ver.
     // , 'Qs9C5sVJuVs' // 岡崎体育 『Natural Lips』Music Video
     // , 'mzVzrnXxaeg' // 東京カランコロン / 16のbeat【MUSIC VIDEO&特典DVD映像】
-    , 'iD0Iw2WdejQ' // アイドルネッサンス「君の知らない物語」（MV）
-    , 'njHa9pefKvc' // アイドルネッサンス「ベステンダンク」（MV）
-    , 'E_xBlRnjG04' // アイドルネッサンス「Funny Bunny」（MV）
-    , 'XWT2MHwDg8g' // アイドルネッサンス「夏の決心」（MV）
-    , 'e1ys_U7oRaQ' // アイドルネッサンス「YOU」（MV）
-    , 'c5zj5vFOBoc' // アイドルネッサンス「初恋」（MV）
-    , 'NcXP133MUsE' // アイドルネッサンス「太陽と心臓」（MV）
-    , 'LMBo8dIXxQc' // アイドルネッサンス「１７才」（MV）
-    , 'brN4Asv7QHA' // アイドルネッサンス「前髪」（MV）
-    , 'iNR0Ee5tFao' // アイドルネッサンス「5センチメンタル」（MV）
-    , 'cS7NIpdhrpw' // アイドルネッサンス「交感ノート」（MV）
-    , 'cL81kpOCzh4' // アイドルネッサンス「Blue Love Letter」（Official Audio）＜映像＞ライブまとめ
+    // , 'iD0Iw2WdejQ' // アイドルネッサンス「君の知らない物語」（MV）
+    // , 'njHa9pefKvc' // アイドルネッサンス「ベステンダンク」（MV）
+    // , 'E_xBlRnjG04' // アイドルネッサンス「Funny Bunny」（MV）
+    // , 'XWT2MHwDg8g' // アイドルネッサンス「夏の決心」（MV）
+    // , 'e1ys_U7oRaQ' // アイドルネッサンス「YOU」（MV）
+    // , 'c5zj5vFOBoc' // アイドルネッサンス「初恋」（MV）
+    // , 'NcXP133MUsE' // アイドルネッサンス「太陽と心臓」（MV）
+    // , 'LMBo8dIXxQc' // アイドルネッサンス「１７才」（MV）
+    // , 'brN4Asv7QHA' // アイドルネッサンス「前髪」（MV）
+    // , 'iNR0Ee5tFao' // アイドルネッサンス「5センチメンタル」（MV）
+    // , 'cS7NIpdhrpw' // アイドルネッサンス「交感ノート」（MV）
+    // , 'cL81kpOCzh4' // アイドルネッサンス「Blue Love Letter」（Official Audio）＜映像＞ライブまとめ
     ];
     var hotaru_youtube = null;
 
@@ -393,6 +393,6 @@
         comment_count++;
       }
       tmp_comment = comment;
-      check_live_close();
+      // check_live_close();
     });
   })();
