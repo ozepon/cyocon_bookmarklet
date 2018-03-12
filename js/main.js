@@ -4,7 +4,7 @@
       alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
     }
     // 更新日をversionとする
-    var update_date = '2018.3.8: 超介対応';
+    var update_date = '2018.3.13: 画面変更無効。初期値に固定';
 
     // 起動時ミュート
     var mute = document.getElementsByClassName('volumeMute')[0];
@@ -19,31 +19,31 @@
     chat_bottom.style.position = "relative";
     chat_bottom.appendChild(time);
 
-    // videoが縦なので横にする 
-    var video_styles = [
-      {
-        "transform":"rotate(-90deg)",
-        "position":"absolute",
-        "left":"-22%",
-        "width":"100%",
-        "height":"178%"
-      },
-      {
-        "transform":"rotate(-270deg)",
-        "position":"absolute",
-        "left":"22%",
-        "width":"100%",
-        "height":"178%"
-      }]
-    var screen_kurun_status = 0; 
-    var video_box = document.getElementsByClassName('videoBox')[0];
-    video_box.style.transform = video_styles[screen_kurun_status]["transform"];
-    video_box.style.position  = video_styles[screen_kurun_status]["position"];
-    video_box.style.left      = video_styles[screen_kurun_status]["left"];
+    // // videoが縦なので横にする 
+    // var video_styles = [
+    //   {
+    //     "transform":"rotate(-90deg)",
+    //     "position":"absolute",
+    //     "left":"-22%",
+    //     "width":"100%",
+    //     "height":"178%"
+    //   },
+    //   {
+    //     "transform":"rotate(-270deg)",
+    //     "position":"absolute",
+    //     "left":"22%",
+    //     "width":"100%",
+    //     "height":"178%"
+    //   }]
+    // var screen_kurun_status = 0; 
+    // var video_box = document.getElementsByClassName('videoBox')[0];
+    // video_box.style.transform = video_styles[screen_kurun_status]["transform"];
+    // video_box.style.position  = video_styles[screen_kurun_status]["position"];
+    // video_box.style.left      = video_styles[screen_kurun_status]["left"];
 
-    var video = video_box.children[0];
-    video.style.width  = video_styles[screen_kurun_status]["width"];
-    video.style.height = video_styles[screen_kurun_status]["height"];
+    // var video = video_box.children[0];
+    // video.style.width  = video_styles[screen_kurun_status]["width"];
+    // video.style.height = video_styles[screen_kurun_status]["height"];
 
     var comment_body = $('.LyTop')
     comment_body.attr('style', 'position :relative;z-index:1;');
@@ -157,45 +157,45 @@
     comment_body.append(twitter_link);
 
     
-    // screen_kurun_buttonボタン
-    var screen_kurun_button = document.createElement('div');
-    // start_button.innerText = '';
-    // start_button.style.background = 'rgb(0, 255, 133)';
-    screen_kurun_button.style.border = '1px solid'
-    screen_kurun_button.style.position = 'absolute';
-    screen_kurun_button.style.top = '20px';
-    screen_kurun_button.style.right = '464px';
-    screen_kurun_button.style.zIndex = 100000;
-    screen_kurun_button.style.width = '3em';
-    screen_kurun_button.style.textAlign = 'center';
-    screen_kurun_button.style.height = '2em';
-    screen_kurun_button.style.lineHeight = '2em';
-    screen_kurun_button.style.borderRadius = '5px';
-    screen_kurun_button.style.paddingLeft = '6px';
-    screen_kurun_button.classList.add('MdTxtReload');
+    // // screen_kurun_buttonボタン
+    // var screen_kurun_button = document.createElement('div');
+    // // start_button.innerText = '';
+    // // start_button.style.background = 'rgb(0, 255, 133)';
+    // screen_kurun_button.style.border = '1px solid'
+    // screen_kurun_button.style.position = 'absolute';
+    // screen_kurun_button.style.top = '20px';
+    // screen_kurun_button.style.right = '464px';
+    // screen_kurun_button.style.zIndex = 100000;
+    // screen_kurun_button.style.width = '3em';
+    // screen_kurun_button.style.textAlign = 'center';
+    // screen_kurun_button.style.height = '2em';
+    // screen_kurun_button.style.lineHeight = '2em';
+    // screen_kurun_button.style.borderRadius = '5px';
+    // screen_kurun_button.style.paddingLeft = '6px';
+    // screen_kurun_button.classList.add('MdTxtReload');
 
-    comment_body.append(screen_kurun_button);
+    // comment_body.append(screen_kurun_button);
 
-    // 画面表示変更
-    function change_screen_style(video_box, video, video_styles, screen_kurun_status) {
-      console.log("がめんへんこう");
-      console.log(screen_kurun_status)
-      // screen_kurun_status = screen_kurun_status == 1 ? 0 : 1;
-      // console.log(screen_kurun_status)
-      video_box.style.transform = video_styles[screen_kurun_status]["transform"];
-      video_box.style.position  = video_styles[screen_kurun_status]["position"];
-      video_box.style.left      = video_styles[screen_kurun_status]["left"];
-      video.style.width  = video_styles[screen_kurun_status]["width"];
-      video.style.height = video_styles[screen_kurun_status]["height"];
-    }
-    screen_kurun_button.addEventListener('click',function(){
-      if((video_styles.length - 1)  <= screen_kurun_status){
-        screen_kurun_status = 0;
-      } else {
-        screen_kurun_status++;
-      }
-      change_screen_style(video_box, video, video_styles, screen_kurun_status);
-    }, false);
+    // // 画面表示変更
+    // function change_screen_style(video_box, video, video_styles, screen_kurun_status) {
+    //   console.log("がめんへんこう");
+    //   console.log(screen_kurun_status)
+    //   // screen_kurun_status = screen_kurun_status == 1 ? 0 : 1;
+    //   // console.log(screen_kurun_status)
+    //   video_box.style.transform = video_styles[screen_kurun_status]["transform"];
+    //   video_box.style.position  = video_styles[screen_kurun_status]["position"];
+    //   video_box.style.left      = video_styles[screen_kurun_status]["left"];
+    //   video.style.width  = video_styles[screen_kurun_status]["width"];
+    //   video.style.height = video_styles[screen_kurun_status]["height"];
+    // }
+    // screen_kurun_button.addEventListener('click',function(){
+    //   if((video_styles.length - 1)  <= screen_kurun_status){
+    //     screen_kurun_status = 0;
+    //   } else {
+    //     screen_kurun_status++;
+    //   }
+    //   change_screen_style(video_box, video, video_styles, screen_kurun_status);
+    // }, false);
 
     // ターゲットになったらはんなりする
     var comment_count = 0;
