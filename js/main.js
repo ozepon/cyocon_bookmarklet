@@ -4,7 +4,7 @@
       alert('ブラウザが棒読み機能に対応してない(((;ꏿöꏿ;)))。あのイケメンに報告や！')
     }
     // 更新日をversionとする
-    var update_date = '2018.3.30: ちょこん13パターン対応';
+    var update_date = '2018.6.6: あったらいいなBGM機能追加。アイドルverっす';
 
     // 起動時ミュート
     var mute = document.getElementsByClassName('volumeMute')[0];
@@ -46,6 +46,29 @@
         comment_body.append(hotaru_wrap);
       }
     }
+
+    function add_youtube() {
+      var hotaru_wrap = $('<div></div>');
+      hotaru_wrap.css('position','absolute');
+      hotaru_wrap.css('right','8%');
+      hotaru_wrap.css('top','70%');
+      hotaru_wrap.css('width','350px');
+      
+      var message = $('<div>BGMに困ったらこちらの再生リストをどうぞ！</div>');
+      message.css('background', '#0000009c');
+      message.css('color', 'white');
+      message.css('font-size', '.8rem');
+      message.css('text-indent', '.8rem');
+      hotaru_wrap.append(message);
+
+      var play_list_id = '?listType=playlist&list=PLRbcSF64EjLLB9KOxguIc_9W_c7EG9rGq';
+      var ele_str = '<iframe width="100%" src=https://www.youtube.com/embed/' + play_list_id + '&loop=1&autoplay=0 frameborder="0" allowfullscreen></iframe>';
+      hotaru_youtube = $(ele_str);
+      hotaru_wrap.append(hotaru_youtube);
+
+      comment_body.append(hotaru_wrap);
+    }
+    add_youtube();
 
     // versionを表示
     var version = document.createElement('div');
