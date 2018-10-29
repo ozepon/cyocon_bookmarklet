@@ -6,7 +6,7 @@
     );
   }
   // 更新日をversionとする
-  var update_date = "2018.10.30 パパさん、MG対応";
+  var update_date = "2018.10.30 パパさん、MG対応&Youtube配置変更";
 
   // 起動時ミュート
   var mute = document.getElementsByClassName("volumeMute")[0];
@@ -56,8 +56,8 @@
   function add_youtube() {
     var hotaru_wrap = $("<div></div>");
     hotaru_wrap.css("position", "absolute");
-    hotaru_wrap.css("right", "8%");
-    hotaru_wrap.css("top", "70%");
+    hotaru_wrap.css("right", "37%");
+    hotaru_wrap.css("top", "75%");
     hotaru_wrap.css("width", "350px");
 
     var message = $("<div>BGMに困ったらこちらの再生リストをどうぞ！</div>");
