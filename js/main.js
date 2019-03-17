@@ -6,20 +6,54 @@
     );
   }
   // 更新日をversionとする
-  var update_date = "2018.10.30 パパさん、MG対応&Youtube配置変更";
+  var update_date =
+    "2019.03.17 [追加・変更] Voiceタイプ一括変換追加, Voiceタイプ見直し。 [削除]個別音声設定";
 
   // 起動時ミュート
   var mute = document.getElementsByClassName("volumeMute")[0];
-  mute.click();
+  if (mute) {
+    mute.click();
+  }
+
+  // voice type
+  var voiceType = {
+    normal: {
+      pitch: 100,
+      rate: 1.1,
+      volume: 2
+    },
+    dandy: {
+      pitch: -0.5,
+      rate: 1.2,
+      volume: 2.5
+    },
+    okinawa: {
+      pitch: 2,
+      rate: 0.5,
+      volume: 0.5
+    },
+    geek: {
+      pitch: -0.2,
+      rate: 0.65,
+      volume: 2.5
+    }
+  };
+
+  // default voice
+  var defaultVoice = "normal";
+  // active voice
+  var activeVoice = defaultVoice;
 
   // 時間
   var time = document.getElementsByClassName("timeBox")[0];
-  time.style.position = "absolute";
-  time.style.zoom = "3";
-  time.style.right = "0";
-  var chat_bottom = document.getElementsByClassName("MdMN14Info")[0];
-  chat_bottom.style.position = "relative";
-  chat_bottom.appendChild(time);
+  if (time) {
+    time.style.position = "absolute";
+    time.style.zoom = "3";
+    time.style.right = "0";
+    var chat_bottom = document.getElementsByClassName("MdMN14Info")[0];
+    chat_bottom.style.position = "relative";
+    chat_bottom.appendChild(time);
+  }
 
   var comment_body = $(".LyTop");
   comment_body.attr("style", "position :relative;z-index:1;");
@@ -29,29 +63,6 @@
     "brUWAlQsWMg" // ホタルの光
   ];
   var hotaru_youtube = null;
-
-  // 終了5分前になったら蛍の光を流す
-  function check_live_close() {
-    var close_time = 55;
-    if (close_time <= parseInt(time.innerHTML) && hotaru_youtube === null) {
-      time.style.color = "orange";
-      var hotaru_wrap = $("<div></div>");
-      hotaru_wrap.css("position", "absolute");
-      hotaru_wrap.css("right", "8%");
-      hotaru_wrap.css("top", "70%");
-      hotaru_wrap.css("width", "350px");
-      var youtube_id =
-        youtube_ids[Math.floor(Math.random() * youtube_ids.length)];
-      var ele_str =
-        '<iframe width="100%" src=https://www.youtube.com/embed/' +
-        youtube_id +
-        '?loop=1&autoplay=1 frameborder="0" allowfullscreen></iframe>';
-      hotaru_youtube = $(ele_str);
-      hotaru_wrap.append(hotaru_youtube);
-
-      comment_body.append(hotaru_wrap);
-    }
-  }
 
   function add_youtube() {
     var hotaru_wrap = $("<div></div>");
@@ -104,55 +115,78 @@
   twitter_link.style.background = "white";
   comment_body.append(twitter_link);
 
-  // // screen_kurun_buttonボタン
-  // var screen_kurun_button = document.createElement('div');
-  // // start_button.innerText = '';
-  // // start_button.style.background = 'rgb(0, 255, 133)';
-  // screen_kurun_button.style.border = '1px solid'
-  // screen_kurun_button.style.position = 'absolute';
-  // screen_kurun_button.style.top = '20px';
-  // screen_kurun_button.style.right = '464px';
-  // screen_kurun_button.style.zIndex = 100000;
-  // screen_kurun_button.style.width = '3em';
-  // screen_kurun_button.style.textAlign = 'center';
-  // screen_kurun_button.style.height = '2em';
-  // screen_kurun_button.style.lineHeight = '2em';
-  // screen_kurun_button.style.borderRadius = '5px';
-  // screen_kurun_button.style.paddingLeft = '6px';
-  // screen_kurun_button.classList.add('MdTxtReload');
+  // select voice typeエレメント
+  var voice_select_button = document.createElement("div");
+  var select_voice_ele = document.createElement("select");
+  for (voice in voiceType) {
+    var option = document.createElement("option");
+    if (voice == defaultVoice) {
+      voice.selected = true;
+    }
+    option.value = voice;
+    option.text = voice;
+    console.log(voice);
+    select_voice_ele.append(option);
+  }
 
-  // comment_body.append(screen_kurun_button);
+  var voice_select_label = document.createElement("div");
+  voice_select_label.innerText = "Select Voice";
+  voice_select_button.append(voice_select_label);
+  voice_select_button.append(select_voice_ele);
 
-  // // 画面表示変更
-  // function change_screen_style(video_box, video, video_styles, screen_kurun_status) {
-  //   console.log("がめんへんこう");
-  //   console.log(screen_kurun_status)
-  //   // screen_kurun_status = screen_kurun_status == 1 ? 0 : 1;
-  //   // console.log(screen_kurun_status)
-  //   video_box.style.transform = video_styles[screen_kurun_status]["transform"];
-  //   video_box.style.position  = video_styles[screen_kurun_status]["position"];
-  //   video_box.style.left      = video_styles[screen_kurun_status]["left"];
-  //   video.style.width  = video_styles[screen_kurun_status]["width"];
-  //   video.style.height = video_styles[screen_kurun_status]["height"];
-  // }
-  // screen_kurun_button.addEventListener('click',function(){
-  //   if((video_styles.length - 1)  <= screen_kurun_status){
-  //     screen_kurun_status = 0;
-  //   } else {
-  //     screen_kurun_status++;
-  //   }
-  //   change_screen_style(video_box, video, video_styles, screen_kurun_status);
-  // }, false);
+  voice_select_button.style.padding = ".5rem";
+  voice_select_button.style.border = "1px solid";
+  voice_select_button.style.position = "absolute";
+  voice_select_button.style.top = "82px";
+  voice_select_button.style.right = "465px";
+  voice_select_button.style.zIndex = 100000;
+  voice_select_button.style.height = "auto";
+  voice_select_button.style.width = "auto";
+
+  voice_select_button.style.textAlign = "center";
+
+  voice_select_button.style.lineHeight = "2em";
+  voice_select_button.style.borderRadius = "5px";
+  voice_select_button.style.paddingLeft = "6px";
+  // voice_select_button.classList.add("MdTxtReload");
+
+  comment_body.append(voice_select_button);
+
+  // 画面表示変更
+  function change_screen_style(
+    video_box,
+    video,
+    video_styles,
+    screen_kurun_status
+  ) {
+    console.log("がめんへんこう");
+    console.log(screen_kurun_status);
+    // screen_kurun_status = screen_kurun_status == 1 ? 0 : 1;
+    // console.log(screen_kurun_status)
+    video_box.style.transform = video_styles[screen_kurun_status]["transform"];
+    video_box.style.position = video_styles[screen_kurun_status]["position"];
+    video_box.style.left = video_styles[screen_kurun_status]["left"];
+    video.style.width = video_styles[screen_kurun_status]["width"];
+    video.style.height = video_styles[screen_kurun_status]["height"];
+  }
+
+  // voiceが選択されたら発火
+  // activeVoiceにselectされたものが設定される
+  select_voice_ele.addEventListener(
+    "change",
+    function(e) {
+      var index = e.target.selectedIndex;
+      var value = e.target.options[index].value;
+      activeVoice = value;
+
+      console.log(`changeVoice => ${value}`);
+    },
+    false
+  );
 
   // ターゲットになったらはんなりする
   var comment_count = 0;
   var target_count = Math.floor(Math.random(1) * 40);
-
-  // target_names
-  var dandy_names = [];
-  var geek_names = ["ISISかなめ"];
-  var okinawa_names = ["さおりん"];
-  var english_names = [];
 
   // 棒読みちゃん
   var tmp_comment = "";
@@ -172,94 +206,6 @@
       target_name = target_info[0].replace(reg, "");
     }
     return target_name;
-  }
-
-  // target判定
-  function set_target(comment) {
-    var name = get_name_to_comment(comment);
-    if (name === null) {
-      return false;
-    }
-
-    if (/dandy/.test(comment)) {
-      console.info("dandyに追加されました　＝＞" + name);
-      dandy_names.push(name);
-
-      //要素を削除する
-      okinawa_names.some(function(v, i) {
-        if (v == name) okinawa_names.splice(i, 1);
-      });
-      geek_names.some(function(v, i) {
-        if (v == name) geek_names.splice(i, 1);
-      });
-      english_names.some(function(v, i) {
-        if (v == name) english_names.splice(i, 1);
-      });
-    } else if (/okinawa/.test(comment)) {
-      console.info("okinawaに追加されました　＝＞" + name);
-      okinawa_names.push(name);
-      dandy_names.some(function(v, i) {
-        if (v == name) dandy_names.splice(i, 1);
-      });
-      geek_names.some(function(v, i) {
-        if (v == name) geek_names.splice(i, 1);
-      });
-      english_names.some(function(v, i) {
-        if (v == name) english_names.splice(i, 1);
-      });
-    } else if (/geek/.test(comment)) {
-      console.info("geekに追加されました　＝＞" + name);
-      geek_names.push(name);
-      okinawa_names.some(function(v, i) {
-        if (v == name) okinawa_names.splice(i, 1);
-      });
-      dandy_names.some(function(v, i) {
-        if (v == name) dandy_names.splice(i, 1);
-      });
-      english_names.some(function(v, i) {
-        if (v == name) english_names.splice(i, 1);
-      });
-    } else if (/しょけん/.test(comment)) {
-      // all　削除
-      okinawa_names.some(function(v, i) {
-        if (v == name) okinawa_names.splice(i, 1);
-      });
-      dandy_names.some(function(v, i) {
-        if (v == name) dandy_names.splice(i, 1);
-      });
-      geek_names.some(function(v, i) {
-        if (v == name) geek_names.splice(i, 1);
-      });
-      english_names.some(function(v, i) {
-        if (v == name) english_names.splice(i, 1);
-      });
-    } else if (/english/.test(comment)) {
-      console.info("englishに追加されました　＝＞" + name);
-      english_names.push(name);
-      okinawa_names.some(function(v, i) {
-        if (v == name) okinawa_names.splice(i, 1);
-      });
-      dandy_names.some(function(v, i) {
-        if (v == name) dandy_names.splice(i, 1);
-      });
-      geek_names.some(function(v, i) {
-        if (v == name) geek_names.splice(i, 1);
-      });
-    }
-  }
-
-  // 配列に渡された名前リストにコメントが前方一致するか判定
-  // params names [Array<String>] 名前の配列
-  // params comment [String]
-  function is_names(names, comment) {
-    var flg = false;
-    names.forEach(function(val, index, arr) {
-      var reg = new RegExp("^" + val);
-      if (reg.test(comment)) {
-        flg = true;
-      }
-    });
-    return flg;
   }
 
   // ちょこん専用map
@@ -332,43 +278,22 @@
         }
       }
 
-      synthes.pitch = 100;
-      synthes.rate = 1.1;
-      synthes.volume = 2;
-
-      // 音声変更
-      if (is_names(okinawa_names, comment)) {
-        synthes.pitch = 2;
-        synthes.rate = 0.5;
-        synthes.volume = 0.5;
-      } else if (is_names(geek_names, comment)) {
-        synthes.pitch = -0.2;
-        synthes.rate = 0.65;
-        synthes.volume = 2.5;
-      } else if (is_names(dandy_names, comment)) {
-        synthes.pitch = -0.5;
-        synthes.rate = 1.2;
-        synthes.volume = 2.5;
-      } else if (is_names(english_names, comment)) {
-        console.log("is english■■■■■■■■■■■■■■■■■■■■■■");
-        synthes.lang = "en-US";
-        // jpのvoiceをセットする
-        for (var i = 0; i < voices.length; i++) {
-          console.log(voices[i]["lang"]);
-          if (voices[i]["lang"] === "en-US") {
-            synthes.voice = voices[i];
-            console.log(voices[i]["lang"]);
-            break;
-          }
-        }
+      // voiceセット
+      voice = voiceType[activeVoice];
+      if (voice) {
+        synthes.pitch = voice.pitch;
+        synthes.rate = voice.rate;
+        synthes.volume = voice.volume;
+      } else {
+        // default
+        synthes.pitch = 100;
+        synthes.rate = 1.1;
+        synthes.volume = 2;
       }
       speechSynthesis.speak(synthes);
 
-      // taregetをセット
-      set_target(comment);
       comment_count++;
     }
     tmp_comment = comment;
-    // check_live_close();
   });
 })();
